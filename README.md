@@ -16,4 +16,4 @@ Mapa Google JavaScript Ok;
 
 -Reposicionar Mark ok;
 
--Receber posição do GPS pelo WebService: Future ;
+-Tela do mapa recebe posiçoes de coordenadas usando javaScript através de webService de forme sincrona: OK ;
