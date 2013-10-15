@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -35,31 +38,18 @@
                         dataType: 'json',
                         async: false
                     }).success(function(data) {
-                        mover(data);
+                        coodenada(data);
+                      //  mover(data);
                     });
                 time();
                 }, 6000);
             }
-            
-
-
-
-//            setTimeout(function() {
-//                        
-//                        teste = null;
-//                        time();
-//                    }, 6000);
-
-
-
-
-
         </script>
 
 
     </h:head>
     <h:body id="body" onload="initialize();" style="margin:0px;">
-        <h:inputText onclick="moverMarker();"  />
+        <h:inputText   />
         <!--        <img id="ponto"
                      src="../../resources/images/icons/hospital-map.png"
                      style="top: 20px;left: 100px;"></img>-->
