@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <h:outputScript name="mapa.js" library="js"/>
+        <h:outputScript name="util.js" library="js"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <style type="text/css"> 
+            html { height: 100% }
+            body { height: 100%; margin: 0px; padding: 0px }
+            #map_canvas {width: 100%; height: 100% }
+            #latlgn { position: absolute; z-index: 999999; margin-left: 10px; top: 0; left: 0; width: 320px; height: 25px; line-height: 25px; background-color: #DDD; border: 1px solid #000;}
+            #ponto { position: absolute; z-index: 999999; margin-left: 10px; top: 0; left: 0;  line-height: 25px; }
+        </style>
+
+        <script type="text/javascript">
+
+
+            jQuery(window).load(function($) {
+                time();
+//                var url = location.href; //pega endereço que esta no navegador
+//                url = url.split("/"); //quebra o endeço de acordo com a / (barra)
+//                alert(url[2]); // retorna a parte www.endereco.com.br
+
+            });
+
+            function time() {
+                setTimeout(function() {
+                    $.ajax({
+                        url: 'http://localhost:8080/FuturoWeb/webservice/gps/get/',
+                        type: "GET",
+                        cache: false,
+                        dataType: 'json',
+                        async: false
+                    }).success(function(data) {
+                        mover(data);
+                    });
+                time();
+                }, 6000);
+            }
+            
+
+
+
+//            setTimeout(function() {
+//                        
+//                        teste = null;
+//                        time();
+//                    }, 6000);
+
+
+
+
+
+        </script>
+
+
+    </h:head>
+    <h:body id="body" onload="initialize();" style="margin:0px;">
+        <h:inputText onclick="moverMarker();"  />
+        <!--        <img id="ponto"
+                     src="../../resources/images/icons/hospital-map.png"
+                     style="top: 20px;left: 100px;"></img>-->
+        <div id="latlgn"></div>
+        <div id="map_canvas" ></div>
+    </h:body>
+</html>

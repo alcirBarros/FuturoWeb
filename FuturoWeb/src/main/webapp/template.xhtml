@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">FuturoWeb</ui:insert></title>
+        <h:outputScript name="util.js" library="js"/>
+        <h:outputScript name="primefaces_lang.js" library="js"/>
+        
+        <f:facet name="middle">
+            <ui:insert name="css"><!-- user css inclusion --></ui:insert>
+        </f:facet>
+    </h:head>
+
+    <h:body>
+        <div id="topo">
+            <div id="logo">
+                <a href="#{facesContext.externalContext.request.contextPath}/pages/principal.faces">
+                    <h:graphicImage url="#{facesContext.externalContext.request.contextPath}/../images/titulo.png"/>
+                </a>
+            </div>
+        </div>
+
+        <div id="menu">
+            <div style="margin-left: 10px; float: left; width: 960px; min-width: 990px;">
+                <h:form id="formMenu">
+                    <h:panelGrid columns="2"  >
+                        <h:panelGrid style="width: 1220px">
+                            <h:panelGrid columns="2" cellspacing="0" >
+                                <h:panelGrid cellpadding="0" cellspacing="0" columns="3" columnClasses="valign-top,valign-top" border="0">
+                                    <h:commandLink action="/pages/principal.faces?faces-redirect=true">
+                                        <h:graphicImage name="home.png" library="images/icons"  style="padding-top:5px;"/>
+                                    </h:commandLink>
+                                    <h:panelGrid cellspacing="8">
+                                        <h:outputText value="#{operadorLogado.modulo.descricao}" rendered="#{not empty operadorLogado.modulo}" style="font-weight: bold; color: #8b8b8b"/>
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                                <p:megaMenu model="#{operadorLogado.menuModel}" rendered="#{not empty operadorLogado.modulo}" style="border:0px; background: none;"
+                                            autoDisplay="false"/>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                        <h:panelGrid columns="3">
+                            <h:commandLink action="#{loginMb.logout}" title="Sair do Sistema">
+                                <h:graphicImage url="#{facesContext.externalContext.request.contextPath}/../images/icons/sair-32.png"/>
+                            </h:commandLink>
+                            <h:graphicImage url="#{facesContext.externalContext.request.contextPath}/../images/icons/menu-32.png"/>
+                            <h:graphicImage url="#{facesContext.externalContext.request.contextPath}/../images/icons/senha-32.png"/>
+                        </h:panelGrid>
+
+                    </h:panelGrid>
+                </h:form>
+            </div>
+            <!--<div id="search" style="float: right; border: 0px solid red;">
+                <h:panelGrid columns="3" cellspacing="0" cellpadding="0" border="0">
+                    <h:panelGrid cellpadding="12" cellspacing="0">
+                        <span class="wijmo-wijmenu-text">Buscar</span>
+                    </h:panelGrid>
+                    <h:panelGrid cellpadding="6" cellspacing="0">
+                        <input type="text" style="height: 26px; border: 0px;"/>
+                    </h:panelGrid>
+                    <img src="#{facesContext.externalContext.request.contextPath}/images/botao_ir.jpg" style="margin-top: 6px; margin-right: 10px;"/>
+                </h:panelGrid>
+            </div>-->
+            <div style="clear: both;"/>
+        </div>
+
+            <div id="body">
+                <p:growl id="messages" showDetail="true" showSummary="false" />
+
+                <h:form id="formEdicao" >
+                    <ui:insert name="body"></ui:insert>
+                </h:form>
+            </div>
+
+        <div id="rodape">
+            <table width="1000" border="0" align="center">
+                <tr>
+                    <td align="left">Vitae Saúde Pública - Todos os Direiros Reservados</td>
+                    <td width="20%" align="right">Versão 1.0-S003 &nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ajax loading -->
+        <div style="position: fixed; _position:absolute; _margin-bottom:0; _margin-right:0; right:0; bottom:0; z-index:100;">
+            <p:ajaxStatus>
+                <f:facet name="start">
+                    <h:graphicImage value="#{facesContext.externalContext.request.contextPath}/../images/ajax-loading2.gif" />
+                </f:facet>
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+        </div>
+    </h:body>
+
+</html>
