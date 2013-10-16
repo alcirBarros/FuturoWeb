@@ -16,4 +16,6 @@ Mapa Google JavaScript Ok;
 
 -Reposicionar Mark ok;
 
--Tela do mapa recebe posiçoes de coordenadas usando javaScript através de webService de forme sincrona: OK ;
+-Pagina web do mapa recebe posiçoes de coordenadas usando javaScript através do webService de forme sincrona: OK ;
+
+-Marcar tragetoria das coordenadas: Ok;
