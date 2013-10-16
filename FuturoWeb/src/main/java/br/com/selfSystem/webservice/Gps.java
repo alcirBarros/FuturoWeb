@@ -25,17 +25,15 @@ public class Gps {
     static {
         eventosMap = new HashMap<Integer, LatLongGPS>();
 
-        LatLongGPS b1 = new LatLongGPS();
-        b1.setId(1);
-        b1.setLatitude("25.030442381294925"); 
-        b1.setLongitude("-51.20699644088745");
-        eventosMap.put(b1.getId(), b1);
+        LatLongGPS latLongGPS = new LatLongGPS();
+        latLongGPS.setId(1); // Código do aparelho
+        latLongGPS.setLatitude("-20.030442381294925"); //Latitude atual
+        latLongGPS.setLongitude("-45.20699644088745"); //Longetude atual
+    
+        latLongGPS.addCoordenadas("-20.030442381294925","-45.20699644088745");
+        latLongGPS.addCoordenadas("-30.030442381294925", "-51.20699644088745");
         
-        LatLongGPS b2 = new LatLongGPS();
-        b2.setId(2);
-        b2.setLatitude("40.030442381294925");
-        b2.setLongitude("-51.20699644088745");
-        eventosMap.put(b2.getId(), b2);
+        eventosMap.put(latLongGPS.getId(), latLongGPS);
     }
 
     @GET
