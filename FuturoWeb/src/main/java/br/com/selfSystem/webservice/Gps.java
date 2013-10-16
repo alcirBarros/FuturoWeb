@@ -27,8 +27,8 @@ public class Gps {
 
         LatLongGPS latLongGPS = new LatLongGPS();
         latLongGPS.setId(1); // Código do aparelho
-        latLongGPS.setLatitude("-20.030442381294925"); //Latitude atual
-        latLongGPS.setLongitude("-45.20699644088745"); //Longetude atual
+        latLongGPS.setLatitude("-30.030442381294925"); //Latitude atual
+        latLongGPS.setLongitude("-51.20699644088745"); //Longetude atual
     
         latLongGPS.addCoordenadas("-20.030442381294925","-45.20699644088745");
         latLongGPS.addCoordenadas("-30.030442381294925", "-51.20699644088745");
@@ -58,6 +58,7 @@ public class Gps {
         if(get != null){
             get.setLatitude(latLongGPS.getLatitude());
             get.setLongitude(latLongGPS.getLongitude());
+            get.addCoordenadas(latLongGPS.getLatitude(),latLongGPS.getLongitude());
         }else{
             latLongGPS.setId(latLongGPS.getId());
             eventosMap.put(latLongGPS.getId(), latLongGPS);
