@@ -33,7 +33,7 @@ function addMarker(id, lant, long) {
 }
 
 function coodenada(data) {
-    
+    console.log(data[0]);
     var points = [];
     
     for (var i in data) {
