@@ -12,7 +12,7 @@ function initialize() {
 
 
 function addMarker(id, lant, long) {
-    if (markersArray[id] == null) {
+    if (markersArray[id].isEnpyt()) {
         var latLng = new google.maps.LatLng(lant, long);
         var marker = new google.maps.Marker({
             position: latLng,
