@@ -1,12 +1,15 @@
 package br.com.gps;
 
+import br.com.conexao.Conexao;
 import android.app.Activity;
 import android.content.Context;
-import android.location.Criteria;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -92,25 +95,38 @@ public class MainActivity extends Activity implements LocationListener {
     	builder.append(longitude);
     	builder.append("\"}");
     	
-    	String[] resposta = new WebService().post("http://192.168.2.92:8080/FuturoWeb/webservice/gps/post", builder.toString());
+    	WebService webService = new WebService();
+    	
+    	String[] resposta = webService.post("http://192.168.2.190:8080/tcc/webservice/eventos/post", builder.toString());
     	Toast.makeText(getBaseContext(), resposta[1].toString(), Toast.LENGTH_LONG).show();
+
     }
     
     public void startGPS() {
         LocationManager lManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        
+        EditText edLatitude = (EditText) findViewById(R.id.latitude);
+        EditText edlongetude = (EditText) findViewById(R.id.longetude);
+        
+        enviarCoodenadas(new Double(edLatitude.getText().toString()) , new Double(edlongetude.getText().toString()));  
+        
         LocationListener lListener = new LocationListener() {
-            public void onLocationChanged(Location locat) {
+            
+        	public void onLocationChanged(Location locat) {
             	updateView(locat);
             	enviarCoodenadas(locat.getLatitude(), locat.getLongitude());       	
             }
-
+        	
             public void onStatusChanged(String provider, int status, Bundle extras) {
+            	trace("onStatusChanged");
             }
 
             public void onProviderEnabled(String provider) {
+            	trace("onProviderEnabled");
             }
 
             public void onProviderDisabled(String provider) {
+            	trace("onProviderDisabled");
             }
         };
         lManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, lListener);
@@ -134,10 +150,12 @@ public class MainActivity extends Activity implements LocationListener {
     }
 
     public void onStatusChanged(String string, int i, Bundle bundle) {
+    	trace("onStatusChanged");
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void onProviderEnabled(String string) {
+    	trace("onProviderEnabled");
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -147,5 +165,30 @@ public class MainActivity extends Activity implements LocationListener {
 //        tv.setText("Erro no GPS");
 //
 //        setContentView(tv);
+    }
+    
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+    	MenuItem menuFormatar = menu.add(0, 7, 0,"Conexão");
+    	menuFormatar.setIcon(android.R.drawable.ic_menu_edit);
+    	return super.onCreateOptionsMenu(menu);
+    }
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// de acordo com o item selecionado você executará
+		// a função desejada
+		switch (item.getItemId()) {
+
+		case 7:
+			Intent intent = new Intent(this, Conexao.class);
+			startActivity(intent);
+			break;
+		}
+		return true;
+	}
+
+    private void trace (String msg){
+        Toast.makeText (getApplicationContext(), msg, Toast.LENGTH_SHORT).show ();
     }
 }
