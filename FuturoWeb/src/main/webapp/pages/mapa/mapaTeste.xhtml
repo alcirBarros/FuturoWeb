@@ -32,14 +32,14 @@
             function time() {
                 setTimeout(function() {
                     $.ajax({
-                        url: 'http://localhost:8080/FuturoWeb/webservice/gps/get/',
+                        url: 'http://localhost:8084/FuturoWeb/webservice/gps/get/',
                         type: "GET",
                         cache: false,
                         dataType: 'json',
                         async: false
                     }).success(function(data) {
                         coodenada(data);
-                      //  mover(data);
+                        mover(data);
                     });
                 time();
                 }, 900);

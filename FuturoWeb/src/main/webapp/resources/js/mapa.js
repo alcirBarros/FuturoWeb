@@ -33,7 +33,6 @@ function addMarker(id, lant, long) {
 }
 
 function coodenada(data) {
-    console.log(data[0]);
     var points = [];
     
     for (var i in data) {
@@ -48,6 +47,19 @@ function coodenada(data) {
 
     var polyline = new google.maps.Polyline(polylineOptions);
 
+}
+
+function mover(data) {
+
+   // console.log(data);
+    for (var i in data) {
+      //  console.log(data[i]);
+        var dadosLatLng = new google.maps.LatLng(data[i].latitude, data[i].longitude);
+        var marker = new google.maps.Marker({
+            position: dadosLatLng,
+            map: map
+        });
+    }
 }
 
 

@@ -12,14 +12,15 @@ document.onmousemove = coordinates_mouse;
 
 function mover(data) {
 
-    for (var i in data) {
-        console.log(data[i]);
-        var dadosLatLng = new google.maps.LatLng(data[i].latitude, data[i].longitude);
-        var marker = new google.maps.Marker({
-            position: dadosLatLng,
-            map: map
-        });
-    }
+    console.log(data);
+//    for (var i in data) {
+//        console.log(data[i]);
+//        var dadosLatLng = new google.maps.LatLng(data[i].latitude, data[i].longitude);
+//        var marker = new google.maps.Marker({
+//            position: dadosLatLng,
+//            map: map
+//        });
+//    }
 }
 
 function coordinates_mouse(event){
