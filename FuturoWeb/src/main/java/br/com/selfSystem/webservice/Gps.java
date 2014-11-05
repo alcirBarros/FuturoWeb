@@ -17,6 +17,8 @@ import javax.ws.rs.Produces;
 @RequestScoped
 @Path("/gps")
 public class Gps {
+    
+    //http://localhost:8080/FuturoWeb/webservice/gps
 
     static final private Map<Integer, LatLongGPS> eventosMap;
     @Inject

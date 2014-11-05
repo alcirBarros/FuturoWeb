@@ -46,4 +46,8 @@
         <servlet-name>ServletAdaptor</servlet-name>
         <url-pattern>/webservice/*</url-pattern>
     </servlet-mapping>
+    
+    <listener>
+        <listener-class>br.com.selfSystem.util.QuartzListener</listener-class>
+    </listener>
 </web-app>
