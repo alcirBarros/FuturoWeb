@@ -1,6 +1,5 @@
 package br.com.selfSystem.webservice;
 
-import br.com.selfSystem.facade.ModuloFacade;
 import br.com.selfSystem.model.LatLongGPS;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,8 +20,7 @@ public class Gps {
     //http://localhost:8080/FuturoWeb/webservice/gps
 
     static final private Map<Integer, LatLongGPS> eventosMap;
-    @Inject
-    private ModuloFacade moduloFacade;
+
 
     static {
         eventosMap = new HashMap<Integer, LatLongGPS>();
