@@ -67,7 +67,7 @@
         </web-resource-collection>
     </security-constraint>
     
-    <security-constraint>
+<!--    <security-constraint>
         <web-resource-collection>
             <web-resource-name>Protected</web-resource-name>
             <url-pattern>/pages/*</url-pattern>
@@ -75,7 +75,7 @@
         <auth-constraint>
             <role-name>*</role-name>
         </auth-constraint>
-    </security-constraint>
+    </security-constraint>-->
     
     <security-role>
         <role-name>*</role-name>
